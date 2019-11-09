@@ -13,7 +13,7 @@ def write_wav_file(file_name, data, sample_rate=48000, frame_length=2048):
         file_name = file_name.replace(os.path.splitext(file_name)[0], 'wav')
     data_dims = data.shape[0]
     if frame_length != 1:
-        output_data = np.zeros((data_dims, sample_rate * frame_length))
+        output_data = np.zeros((data_dims, len(data[0]) * frame_length))
         for dim in range(data_dims):
             for i in range(len(data[dim])):
                 for j in range(frame_length):
