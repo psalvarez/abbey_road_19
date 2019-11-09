@@ -9,8 +9,8 @@ Given sample rate (input and output), frame length, and the data array (1-D)
 
 
 def write_wav_file(file_name, data, sample_rate=48000, frame_length=2048):
-    if os.path.splitext(file_name)[0] != 'wav':
-        file_name = file_name.replace(os.path.splitext(file_name)[0], 'wav')
+    if os.path.splitext(file_name)[1] != 'wav':
+        file_name = file_name.replace(os.path.splitext(file_name)[1], 'wav')
     data_dims = data.shape[0]
     if frame_length != 1:
         output_data = np.zeros((data_dims, len(data[0]) * frame_length))
