@@ -8,7 +8,7 @@ import os
 def menu():
     import argparse
     parser = argparse.ArgumentParser(description='Extract features from audio signal')
-    parser.add_argument('-f', '--file', default='sounds/annoying_arp.wav')
+    parser.add_argument('-f', '--file', default='sounds/annoying_arp_mono.wav')
     parser.add_argument('-l', '--frame-length', default=2048, type=int)
     args = parser.parse_args()
 
