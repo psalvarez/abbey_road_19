@@ -11,6 +11,7 @@ def load_file(in_file):
     print("Sample rate: {0}".format(sr))
     return signal, sr
 
+
 def extract_rms(signal, window=2048):
     print("Extracting RMS loudness...")
     # We don't want overlap, so frame_length == hop_length
@@ -19,12 +20,17 @@ def extract_rms(signal, window=2048):
     return rms_vals
 
 
-if __name__ == "__main__":
+def menu():
     parser = argparse.ArgumentParser(description='Extract features from audio signal')
     parser.add_argument('-f', '--file', default='sounds/annoying_arp.wav')
     parser.add_argument('-l', '--frame-length', default=2048)
     args = parser.parse_args()
 
-    in_signal, sr = load_file(args.file) 
-    rms_vals = extract_rms(in_signal, window=int(args.frame_length))
+    return args
+
+
+if __name__ == "__main__":
+    params = menu()
+    in_signal, sr = load_file(params.file) 
+    rms_vals = extract_rms(in_signal, window=int(params.frame_length))
     print("Done")
