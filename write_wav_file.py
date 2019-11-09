@@ -8,7 +8,7 @@ Given sample rate (input and output), frame length, and the data array (1-D)
 """
 
 
-def write_wav_file(file_name, data, sample_rate=48000, frame_length=1):
+def write_wav_file(file_name, data, sample_rate=48000, frame_length=2048):
     if os.path.splitext(file_name)[0] != 'wav':
         file_name = file_name.replace(os.path.splitext(file_name)[0], 'wav')
     data_dims = data.shape[0]
