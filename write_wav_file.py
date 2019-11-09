@@ -1,6 +1,7 @@
 import soundfile
 import numpy as np
 import sys
+import librosa
 import os
 
 """
@@ -20,9 +21,12 @@ def write_wav_file(file_name, data, sample_rate=48000, frame_length=2048):
                     output_data[dim, (i*frame_length)+j] = data[dim][i]
     else:
         output_data = data
+    output_data = output_data.transpose()
     print('Output data, with dimensions {}, looks like...'.format(output_data.shape))
     print(output_data)
-    soundfile.write(file_name, output_data, sample_rate)
+    print(output_data.shape)
+    # soundfile.write(file_name, output_data, sample_rate)
+    librosa.output.write_wav(file_name, output_data, sample_rate)
 
 
 if __name__ == '__main__':
