@@ -27,5 +27,4 @@ def write_wav_file(file_name, data, sample_rate=48000, frame_length=1):
 
 if __name__ == '__main__':
     rms_values = np.random.rand(1, 10)
-    print(rms_values)
     write_wav_file('test_output.wav', rms_values, 10, 3)
