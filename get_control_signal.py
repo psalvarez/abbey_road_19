@@ -38,5 +38,5 @@ if __name__ == '__main__':
     in_signal, sr = load_file(params.file)
     c_signal, sample_rate, feat_name = feature_select(params, in_signal, sr)
     c_wav_filename = "{0}_{1}.wav".format(os.path.basename(os.path.splitext(params.file)[0]), feat_name)
-    write_wav_file.write_wav_file(c_wav_filename, c_signal, sample_rate, params.frame_length, in_signal)
+    write_wav_file.write_wav_file(c_wav_filename, c_signal, sample_rate, frame_length=params.frame_length, input_steam=in_signal)
 
