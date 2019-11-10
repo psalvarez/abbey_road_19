@@ -22,7 +22,7 @@ def extract_rms(signal, window=2048):
 def get_onsets(signal, sr=48000):
     import librosa.onset
     print('Extracting onsets...')
-    onset_pos = librosa.onset.onset_detect(signal, sr, units='frames')
+    onset_pos = librosa.onset.onset_detect(signal, sr, units='samples')
     print(onset_pos)
     return onset_pos, sr
 

@@ -45,6 +45,7 @@ def generate_zcr_output(data, frame_length):
     else:
         output_data = data
     output_data = output_data.transpose()
+
     return output_data
 
 
