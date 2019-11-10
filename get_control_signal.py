@@ -21,7 +21,7 @@ def menu():
 def feature_select(params):
     in_signal, sr = load_file(params.file)
     if params.rms:
-        out_signal, sr = extract_feature(in_signal, window=frame_length)
+        out_signal, sr = extract_feature(in_signal, window=params.frame_length)
     elif params.onsets:
         out_signal, sr = extract_feature(in_signal, sr=sr)
     else:
@@ -32,7 +32,7 @@ def feature_select(params):
 
 if __name__ == '__main__':
     params = menu()
-    rms_values, sample_rate = feature_extractor.main(params.file, params.frame_length)
+    c_signal, sample_rate = feature_select(params)
     rms_wav_filename = "{0}_rms.wav".format(os.path.basename(os.path.splitext(params.file)[0]))
     write_wav_file.write_wav_file(rms_wav_filename, rms_values, sample_rate, params.frame_length)
 
