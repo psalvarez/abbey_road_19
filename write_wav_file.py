@@ -27,6 +27,8 @@ def generate_offset_output(data, input_stream):
     output_data = np.zeros((len(input_stream), 1))
     for i in data:
         output_data[i][0] = 1
+        onsets.append(i)
+
     return output_data
 
 
