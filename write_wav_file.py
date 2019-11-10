@@ -24,7 +24,7 @@ def generate_rms_output(data, frame_length):
 
 
 def generate_offset_output(data, input_stream):
-    output_data = np.zeros(len(input_stream), 1)
+    output_data = np.zeros((len(input_stream), 1))
     for i in data:
         output_data[i][0] = 1
     return output_data
