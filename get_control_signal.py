@@ -15,6 +15,18 @@ def menu():
     return args
 
 
+def feature_select(params):
+    in_signal, sr = load_file(params.file)
+    if params.rms:
+        out_signal, sr = extract_feature(in_signal, window=frame_length)
+    elif params.onsets:
+        out_signal, sr = extract_feature(in_signal, sr=sr)
+    else:
+        print("You didn't choose anything, you moron")
+
+    return out_signal, sr
+
+
 if __name__ == '__main__':
     params = menu()
     rms_values, sample_rate = feature_extractor.main(params.file, params.frame_length)
