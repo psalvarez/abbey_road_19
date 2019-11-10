@@ -22,7 +22,6 @@ def menu():
 
 def feature_select(params, in_signal, sr):
     feat_name = ""
-    params.spectral_centroid = True
     if params.rms:
         out_signal = feature_extractor.extract_rms(in_signal, window=params.frame_length)
         feat_name = "rms"
@@ -49,5 +48,6 @@ if __name__ == '__main__':
     in_signal, sr = feature_extractor.load_file(params.file)
     c_signal, feat_name = feature_select(params, in_signal, sr)
     c_wav_filename = "{0}_{1}.wav".format(os.path.basename(os.path.splitext(params.file)[0]), feat_name)
-    write_wav_file.write_wav_file(c_wav_filename, c_signal, feat_name, sr, frame_length=params.frame_length, input_stream=in_signal)
+    write_wav_file.write_wav_file(c_wav_filename, c_signal, feat_name, sr, frame_length=params.frame_length,
+                                  input_stream=in_signal)
 
