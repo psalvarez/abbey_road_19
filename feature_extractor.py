@@ -19,14 +19,8 @@ def extract_rms(signal, window=2048):
     return rms_vals
 
 
-def main(file, frame_length):
-    in_signal, sr = load_file(file)
-    rms_vals = extract_rms(in_signal, window=frame_length)
-    return rms_vals, sr
-
-
 def get_onsets(signal, sr=48000):
     import librosa.onset
     onset_pos = librosa.onset.onset_detect(signal, sr, units='frames')
     print(onset_pos)
-    return onset_pos
+    return onset_pos, sr
