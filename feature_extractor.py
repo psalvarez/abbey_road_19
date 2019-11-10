@@ -21,6 +21,24 @@ def extract_rms(signal, window=2048):
 
 def get_onsets(signal, sr=48000):
     import librosa.onset
+    print('Extracting onsets...')
     onset_pos = librosa.onset.onset_detect(signal, sr, units='samples')
     print(onset_pos)
-    return onset_pos
+    return onset_pos, sr
+
+
+def get_zero_crossing_rate(signal, frame_length, hop_length):
+    import librosa.feature
+    print('Extracting zero crossing rate...')
+    zcr_values = librosa.feature.zero_crossing_rate(signal, frame_length, hop_length, center=True)
+    print(zcr_values)
+    return zcr_values
+
+
+def get_spectrial_centroid(signal, frame_length, hop_length, sr=48000):
+    import librosa.feature
+    print('Extracting spectral centroid...')
+    spectral_centroid = librosa.feature.spectral_centroid(signal, sr=sr, win_length=frame_length,
+                                                          hop_length=hop_length)
+    print(spectral_centroid)
+    return spectral_centroid
