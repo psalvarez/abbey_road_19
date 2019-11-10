@@ -14,6 +14,7 @@ def menu():
     parser.add_argument('--rms', action='store_true')
     parser.add_argument('--onset', action='store_true')
     parser.add_argument('--zcr', action='store_true')
+    parser.add_argument('--spectral_centroid', action='store_true')
     args = parser.parse_args()
 
     return args
@@ -21,6 +22,7 @@ def menu():
 
 def feature_select(params, in_signal, sr):
     feat_name = ""
+    params.spectral_centroid = True
     if params.rms:
         out_signal = feature_extractor.extract_rms(in_signal, window=params.frame_length)
         feat_name = "rms"
@@ -31,6 +33,10 @@ def feature_select(params, in_signal, sr):
         out_signal = feature_extractor.get_zero_crossing_rate(in_signal, frame_length=params.frame_length,
                                                               hop_length=params.frame_length)
         feat_name = "zcr"
+    elif params.spectral_centroid:
+        out_signal = feature_extractor.get_spectrial_centroid(in_signal, frame_length=params.frame_length,
+                                                              hop_length=params.frame_length, sr=sr)
+        feat_name = "spectral_centroid"
     else:
         print("You didn't choose anything, you moron")
         return False
